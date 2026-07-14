@@ -55,6 +55,9 @@
   .kpi .l { color: var(--muted); font-size: 12px; margin-top:2px; }
   .grid { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start; }
   @media (max-width: 820px){ .grid { grid-template-columns: minmax(0,1fr); } }
+  /* 시각 순서: 밸류에이션 → 벤치마크 → 무결성 → 리스크 분해 (번호와 일치) */
+  #p-valuation { order:1; } #p-benchmark { order:2; }
+  #p-integrity { order:3; } #p-risk { order:4; }
   .panel { background: var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px; min-width:0; }
   .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); margin:0 0 14px; font-weight:600; }
   table { width:100%; border-collapse: collapse; font-size:13px; }
@@ -119,13 +122,13 @@
     <div class="panel" id="p-valuation"><h2>① 밸류에이션 <button class="help-btn" data-help="valuation" aria-label="설명">?</button></h2>
       <div class="help" id="help-valuation" hidden>자산별 <b>현재 가치(NAV)</b>와 믿을 만한 값인지 보여줍니다. <b>등급</b>: <span class="hl-a">A</span>=신선·정상, <span class="hl-b">B</span>=조금 오래됨, <span class="hl-c">C</span>=너무 오래되거나 이상. <b>freshness</b>: fresh/stale/expired(갱신 멈춤·주의). <b>검증자 2/25</b>=25명 중 2명 서명하면 확정. 오른쪽 <b>출처</b> 링크로 블록체인에서 원본 값을 직접 확인할 수 있습니다.</div>
       <div class="body"></div></div>
-    <div class="panel" id="p-risk"><h2>② 리스크 분해 <button class="help-btn" data-help="risk" aria-label="설명">?</button></h2>
+    <div class="panel" id="p-risk"><h2>④ 리스크 분해 <button class="help-btn" data-help="risk" aria-label="설명">?</button></h2>
       <div class="help" id="help-risk" hidden>펀드가 담은 실제 증권들의 <b>만기 분포</b>와 <b>가중평균만기(WAM)</b>를 봅니다. 만기가 짧을수록(WAM 작을수록) 금리 변화에 덜 흔들려 안전한 편. <b>look-through(투과)</b> 🎁 = 선물 바구니 두 개를 열었더니 둘 다 사과만 가득이면 사실 몰빵인 것처럼, <b>여러 토큰의 속을 열어 실제로 어디에 얼마나 노출됐는지</b> 합산합니다(예: 국채에 총 얼마).</div>
       <div class="body"></div></div>
     <div class="panel" id="p-integrity"><h2>③ 무결성 게이트 <button class="help-btn" data-help="integrity" aria-label="설명">?</button></h2>
       <div class="help" id="help-integrity" hidden>지금 문제 있는 데이터를 잡아냅니다. 갱신이 멈췄거나(expired), 여러 블록체인에 올라간 같은 자산의 값이 서로 어긋나면(발산) <span class="hl-c">빨간 경고</span>. <span class="hl-a">초록</span>은 "여러 체인에서 값이 일치한다 = 교차검증 통과"라는 뜻입니다.</div>
       <div class="body"></div></div>
-    <div class="panel" id="p-benchmark"><h2>④ 벤치마크 <button class="help-btn" data-help="benchmark" aria-label="설명">?</button></h2>
+    <div class="panel" id="p-benchmark"><h2>② 벤치마크 <button class="help-btn" data-help="benchmark" aria-label="설명">?</button></h2>
       <div class="help" id="help-benchmark" hidden>"직접 국채 사는 것보다 나은가?"를 봅니다. 토큰 이자(yield)를 <b>같은 만기 미국 국채 금리</b>와 비교한 차이(스프레드)로 판단: <b>국채 펀드</b>는 음수(−)=운용·토큰화 <b>비용</b>(직접 국채가 유리). <b>크레딧·CLO</b>는 양수(+)=<b>신용위험 프리미엄</b>(정상, 위험 감수 대가). <b>주식</b>은 국채 비교 부적합. <span class="hl-b">수동</span> 배지=자동이 아니라 사람이 공개 자료에서 넣은 값(가끔 갱신 필요).</div>
       <div class="body"></div></div>
   </div>
