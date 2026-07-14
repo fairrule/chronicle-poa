@@ -1,0 +1,34 @@
+{
+  "name": "chronicle-poa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chronicle Proof of Asset — read-only 수집·분석 시스템",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "verify": "tsx scripts/verify_addresses.ts",
+    "collect": "tsx src/index.ts",
+    "analyze": "tsx src/analyze.ts",
+    "backfill": "tsx scripts/backfill.ts",
+    "alert": "tsx src/alert.ts",
+    "dashboard:build": "cp data/analysis.json dashboard/analysis.json",
+    "dashboard": "npm run dashboard:build && python3 -m http.server 4599 --directory dashboard",
+    "test": "tsx --test src/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^11.10.0",
+    "js-yaml": "^4.1.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.14.0",
+    "playwright": "^1.61.1",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}

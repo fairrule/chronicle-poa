@@ -1,0 +1,48 @@
+# 벤치마크 스프레드 설정 (명세 Phase 3 "벤치마크 스프레드": 온체인 yield vs 외부 벤치마크).
+# 무료 소스만 사용. 토큰 yield가 위험자유금리(국채) 대비 +/- 얼마인지 계산해
+# "직접 국채 사는 게 나은가"를 판정한다.
+
+# 위험자유금리 곡선 — US Treasury 일별 par yield curve (무료·무인증, XML).
+# {year}는 런타임 치환. 태그 BC_1MONTH / BC_3MONTH / BC_6MONTH / BC_1YEAR (단위 %).
+treasury_curve:
+  url: "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
+  tenors:
+    m1: BC_1MONTH
+    m3: BC_3MONTH
+    m6: BC_6MONTH
+    y1: BC_1YEAR
+
+# WAM(가중평균만기, 일) → 비교할 벤치마크 테너 선택. 없으면 default_tenor.
+tenor_by_wam:
+  - { max_days: 45,  tenor: m1 }
+  - { max_days: 135, tenor: m3 }
+  - { max_days: 270, tenor: m6 }
+  - { max_days: 100000, tenor: y1 }
+default_tenor: m3
+
+# 자산별 yield 소스. API가 있으면 url+field, 없으면 manual 값(%, 수동 갱신).
+yields:
+  superstate_ustb_eth:
+    source: superstate-api
+    url: "https://api.superstate.com/v1/funds/1/yield"
+    field: thirty_day       # 응답의 소수값 (0.0349...) → scale 로 %화
+    scale: 100
+  # Centrifuge 자산 — GraphQL(무료). yield30d365 = 30일 연율화(365 basis), RAY(1e27).
+  # 국채(treasury) + 크레딧/CLO(신용 스프레드로 해석). 주식(SPXA)은 벤치 부적합이라 제외.
+  centrifuge_jtrsy_eth:    { source: centrifuge-graphql, symbol: JTRSY,   yield_field: yield30d365 }
+  centrifuge_dejtrsy_eth:  { source: centrifuge-graphql, symbol: deJTRSY, yield_field: yield30d365 }
+  centrifuge_dejtrsy_monad: { source: centrifuge-graphql, symbol: deJTRSY, yield_field: yield30d365 }
+  centrifuge_jaaa_eth:     { source: centrifuge-graphql, symbol: JAAA,    yield_field: yield30d365 }
+  centrifuge_dejaaa_eth:   { source: centrifuge-graphql, symbol: deJAAA,  yield_field: yield30d365 }
+  centrifuge_dejaaa_base:  { source: centrifuge-graphql, symbol: deJAAA,  yield_field: yield30d365 }
+  centrifuge_dejaaa_monad: { source: centrifuge-graphql, symbol: deJAAA,  yield_field: yield30d365 }
+  centrifuge_acrdx_eth:    { source: centrifuge-graphql, symbol: ACRDX,   yield_field: yield30d365 }
+  centrifuge_decrdx_monad: { source: centrifuge-graphql, symbol: deCRDX,  yield_field: yield30d365 }
+
+  # BUIDL — 무료 API 없음. 수동값(공개 출처, 주기적 갱신 필요).
+  securitize_buidl_eth:
+    source: manual
+    value_pct: 3.40              # 7D APY
+    as_of: "2026-07-13"
+    note: "manual · rwa.xyz 7D APY"
+    source_url: "https://app.rwa.xyz/assets/BUIDL"

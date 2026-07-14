@@ -1,0 +1,76 @@
+name: daily
+
+# 매일 1회 수집·분석·알림 + 정적 대시보드 배포 (명세 Phase 4).
+# 데일리 파이프라인은 무료 공용 RPC + 공개 API만 쓰므로 필수 시크릿이 없다.
+# (선택) SLACK_WEBHOOK_URL 시크릿을 넣으면 무결성 위반 시 알림.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 매일 06:00 UTC
+  workflow_dispatch: {} # 수동 트리거
+
+# 상태(SQLite)·대시보드 커밋 + Pages 배포 권한
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: 수집 → 분석 → 대시보드 빌드
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          npm run backfill || true    # Centrifuge 이력(무료), 실패해도 진행
+          npm run collect             # 온체인 + 오프체인 수집 (멱등)
+          npm run analyze             # 분석 → data/analysis.json
+          npm run dashboard:build     # analysis.json → dashboard/
+          npm run alert || true       # 위반 시 Slack (시크릿 있으면)
+
+      - name: 상태 커밋 (SQLite + 대시보드 데이터)
+        id: commit
+        run: |
+          git config user.name "chronicle-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f data/poa.sqlite dashboard/analysis.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "변경 없음"
+          else
+            git commit -m "chore: daily update [skip ci]"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pages 아티팩트 업로드 (dashboard/)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+
+  # 정적 대시보드를 GitHub Pages에 배포 (repo Settings→Pages→Source=GitHub Actions 필요)
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

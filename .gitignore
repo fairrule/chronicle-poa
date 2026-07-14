@@ -1,0 +1,15 @@
+node_modules/
+# 생성물 (재현 가능) — CI가 poa.sqlite만 force-add로 커밋
+data/
+!data/.gitkeep
+*.log
+.env
+.env.*
+secrets/
+service-account*.json
+dist/
+dashboard/analysis.json
+
+# macOS / 로컬
+.DS_Store
+.claude/settings.local.json

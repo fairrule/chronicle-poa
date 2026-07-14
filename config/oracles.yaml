@@ -1,0 +1,134 @@
+# Chronicle Proof of Asset — 오라클 레지스트리 (명세 2.2)
+# 각 항목: id, issuer, asset_ticker, chain, adapter_address, router_address
+# Tier-1 read 대상: adapter가 있으면 adapter, 없으면 router.
+# 신규 오라클 추가 시 코드 변경 없이 여기에 등록만 한다.
+
+oracles:
+  # ---------------- Ethereum ----------------
+  - id: centrifuge_acrdx_eth
+    issuer: Centrifuge
+    asset_ticker: ACRDX
+    chain: ethereum
+    adapter_address: "0x486A0A7676e966a77A32359134F11D95BBcF77dd"
+    router_address: "0x87603527aeBbBDf46D73E524830bE81f93778FFa"
+
+  - id: centrifuge_jaaa_eth
+    issuer: Centrifuge
+    asset_ticker: JAAA
+    chain: ethereum
+    adapter_address: "0x5A4BEEB8854442D69267C9a0a3A17BE60fDded04"
+    router_address: "0x5D44916E0Db13EcD661b20Df4D645904E57589C8"
+
+  - id: centrifuge_jtrsy_eth
+    issuer: Centrifuge
+    asset_ticker: JTRSY
+    chain: ethereum
+    adapter_address: "0x22d9527ad4489D3C760A6380a3c4dD06114B09aE"
+    router_address: "0xE980a33EFA3EDDaa689eCbdCE4B2278D4DB94471"
+
+  - id: centrifuge_dejaaa_eth
+    issuer: Centrifuge
+    asset_ticker: deJAAA
+    chain: ethereum
+    adapter_address: "0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694"
+    router_address: "0x25563a9F085975CC6B86F66F3c010c24c12B3Ffa"
+
+  - id: centrifuge_dejtrsy_eth
+    issuer: Centrifuge
+    asset_ticker: deJTRSY
+    chain: ethereum
+    adapter_address: "0xb71e0Da4C6853718C04dAf58CA2ec22eB0fC4517"
+    router_address: "0x2EdD943484f104760591E18184CaBD53cdfBfC21"
+
+  - id: centrifuge_despxa_eth
+    issuer: Centrifuge
+    asset_ticker: deSPXA
+    chain: ethereum
+    adapter_address: null
+    router_address: "0x58AA442107ac268ffA1309D410fB9c6Be2b67783"
+
+  - id: fission_nav_eth
+    issuer: Fission
+    asset_ticker: NAV
+    chain: ethereum
+    adapter_address: null
+    router_address: "0xE7A65449bb4e68cBa274E92Df7607319DA669415"
+
+  - id: galaxy_clo_eth
+    issuer: Galaxy
+    asset_ticker: CLO
+    chain: ethereum
+    adapter_address: "0xA9D9fBB82900ec4F55Fe8d5213387456b7336974"
+    router_address: "0xBAAC5e7e609930922E52ff0F3DE94903CC98A5ab"
+
+  - id: keyring_pacrdx_eth
+    issuer: Keyring
+    asset_ticker: pACRDX
+    chain: ethereum
+    adapter_address: "0x162D75665AA16526e4E509428333e4669A15119c"
+    router_address: "0xa4A2E6472feb29b3b17f488Da6b5C5Fc1e34EC5A"
+
+  - id: superstate_ustb_eth
+    issuer: Superstate
+    asset_ticker: USTB
+    chain: ethereum
+    adapter_address: "0x5D2edCaD212E2f480CD8E97d839b7D539249b6E5"
+    router_address: "0xDf8deCbDB89C95297ee6ef816Bd8A7B66973f254"
+
+  - id: securitize_stac_eth
+    issuer: Securitize
+    asset_ticker: STAC
+    chain: ethereum
+    adapter_address: "0xc5fc229d60c70420A0c5a64d0A7f59aA7F6f081d"
+    router_address: "0x802CaCc19B9b3eb474C7DEf6f28c64AB67fb0753"
+
+  - id: securitize_buidl_eth
+    issuer: Securitize
+    asset_ticker: BUIDL
+    chain: ethereum
+    adapter_address: "0x35cE8603C90A4286CF91C4c05EfaE4565Daf7eFb"
+    router_address: "0x8c68E0CacB61a065b99E2104457aCC829d61cbB0"
+
+  # ---------------- Base ----------------
+  - id: centrifuge_dejaaa_base
+    issuer: Centrifuge
+    asset_ticker: deJAAA
+    chain: base
+    adapter_address: "0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694"
+    router_address: "0x25563a9F085975CC6B86F66F3c010c24c12B3Ffa"
+
+  - id: centrifuge_despxa724_base
+    issuer: Centrifuge
+    asset_ticker: deSPXA_724
+    chain: base
+    adapter_address: "0x97165Ad36D96567a521958cc46914160B968752b"
+    router_address: "0x7F316A3Da70b0b7ea3C450978c7c143e0Caf0469"
+
+  - id: centrifuge_despxa_base
+    issuer: Centrifuge
+    asset_ticker: deSPXA
+    chain: base
+    adapter_address: "0x914b2E2953C4EdB87C164Fe1fddBdB3F6F34F971"
+    router_address: "0x58AA442107ac268ffA1309D410fB9c6Be2b67783"
+
+  # ---------------- Monad ----------------
+  - id: centrifuge_dejtrsy_monad
+    issuer: Centrifuge
+    asset_ticker: deJTRSY
+    chain: monad
+    adapter_address: "0x1D2d52A40bDa48F2ae32F5f22F30C854A7312D96"
+    router_address: "0x6d0Df32190776224a9BD1e9AbF62b08D6f132905"
+
+  - id: centrifuge_dejaaa_monad
+    issuer: Centrifuge
+    asset_ticker: deJAAA
+    chain: monad
+    adapter_address: "0x9ff1007cbb2D793C6837E67Cd6B3AfEb62529ED0"
+    router_address: "0x5fA50241513e15dBF680B8980fb041eB2135b781"
+
+  - id: centrifuge_decrdx_monad
+    issuer: Centrifuge
+    asset_ticker: deCRDX
+    chain: monad
+    adapter_address: "0xAB13ABE3D2ecD94eB74DB2F35Cc4C5070CA949bB"
+    router_address: "0x3d0Ec176032beFff3BA0E193F98489D7A039cfB4"

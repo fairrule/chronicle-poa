@@ -1,0 +1,25 @@
+# 오프체인 holdings 소스 정의 — USTB (Superstate 공개 API, 무료·무인증).
+# 제너릭 JSON-HTTP 커넥터가 이 정의를 해석해 Holding[]으로 매핑한다(코드 수정 없이 자산 추가).
+#
+# 확인(2026-07-13): https://api.superstate.com/v2/funds/1/holdings → 200, no auth.
+# 한계: CUSIP/ISIN 없음(Security Name을 식별자로), as_of_date 갱신 주기 불명확(지연 가능).
+
+oracle_id: superstate_ustb_eth
+source: superstate-api          # holdings 행의 출처 태그 (감사 추적)
+type: json_http
+
+url: "https://api.superstate.com/v2/funds/1/holdings"
+holdings_path: holdings          # 응답 내 배열 위치 (점 경로)
+as_of_path: as_of_date           # 스냅샷 기준일 → holdings의 observed_at
+
+# 필드 매핑: <canonical> ← { path | const, parse }
+# parse: money($1,234→1234) | percent(3.2%→3.2) | date_dmy(26-May-2026→2026-05-26) | str | none
+fields:
+  instrument_type: { const: "treasury" }
+  identifier:      { path: "Security Name", parse: str }   # CUSIP 없음 → 이름
+  maturity_date:   { path: "Maturity", parse: date_dmy }
+  market_value:    { path: "Base Value/Cost", parse: money }
+  weight_pct:      { path: "% of Fund", parse: percent }
+  yield_pct:       { path: "Current Yld", parse: percent }
+  units:           { const: null }
+  price:           { const: null }

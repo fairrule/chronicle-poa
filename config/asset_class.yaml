@@ -1,0 +1,33 @@
+# 자산군 태그 (oracle_id → asset_class). 벤치마크 해석·look-through 분류에 사용.
+# 근거: Centrifuge pool 이름(2026-07 조회) + 발행사 공개정보.
+#   treasury = 단기 미국채 / clo = CLO / credit = 사모·다변화 크레딧 / equity = 주식지수 / unknown
+# 벤치마크 스프레드 해석: treasury→비용, credit/clo→신용 프리미엄, equity→국채 벤치 부적합.
+
+asset_class:
+  # 국채 (fixed income, 위험자유금리 벤치 적합)
+  centrifuge_jtrsy_eth: treasury
+  centrifuge_dejtrsy_eth: treasury
+  centrifuge_dejtrsy_monad: treasury
+  superstate_ustb_eth: treasury
+  securitize_buidl_eth: treasury
+
+  # CLO (Janus Henderson Anemoy AAA CLO Fund)
+  centrifuge_jaaa_eth: clo
+  centrifuge_dejaaa_eth: clo
+  centrifuge_dejaaa_base: clo
+  centrifuge_dejaaa_monad: clo
+  galaxy_clo_eth: clo
+
+  # 크레딧 (Apollo Diversified Credit Fund 등)
+  centrifuge_acrdx_eth: credit
+  centrifuge_decrdx_monad: credit
+  keyring_pacrdx_eth: credit
+
+  # 주식 지수 (Janus Henderson Anemoy S&P500 Fund) — 국채 벤치 부적합
+  centrifuge_despxa_eth: equity
+  centrifuge_despxa_base: equity
+  centrifuge_despxa724_base: equity
+
+  # 미확인
+  fission_nav_eth: unknown
+  securitize_stac_eth: unknown
