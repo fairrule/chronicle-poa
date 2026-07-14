@@ -53,7 +53,7 @@
   .kpi { background: var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
   .kpi .v { font-size: 24px; font-weight: 650; letter-spacing:-0.02em; }
   .kpi .l { color: var(--muted); font-size: 12px; margin-top:2px; }
-  .grid { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:start; }
+  .grid { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:stretch; }
   @media (max-width: 820px){ .grid { grid-template-columns: minmax(0,1fr); } }
   /* 시각 순서: 밸류에이션 → 벤치마크 → 무결성 → 리스크 분해 (번호와 일치) */
   #p-valuation { order:1; } #p-benchmark { order:2; }
