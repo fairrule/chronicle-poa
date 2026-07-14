@@ -68,6 +68,10 @@ jobs:
   deploy:
     needs: update
     runs-on: ubuntu-latest
+    # deploy-dashboard(pages.yml)의 배포와 동시 실행 방지 (같은 그룹)
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
