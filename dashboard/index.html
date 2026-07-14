@@ -27,6 +27,26 @@
   h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
   h1 .sub { color: var(--muted); font-weight: 400; font-size: 14px; }
   .gen { color: var(--muted); font-size: 12px; }
+  .help-btn {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:20px; height:20px; margin-left:6px; padding:0; vertical-align:middle;
+    border:1px solid var(--line); border-radius:50%; background:var(--panel2);
+    color:var(--muted); font-size:12px; font-weight:700; cursor:pointer; line-height:1;
+  }
+  .help-btn:hover { color:var(--accent); border-color:var(--accent); }
+  .help-btn.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  h1 .help-btn { width:22px; height:22px; }
+  .help {
+    background:color-mix(in srgb, var(--accent) 8%, var(--panel2));
+    border:1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+    border-radius:8px; padding:12px 15px; margin:0 0 12px; font-size:13.5px; line-height:1.65; color:var(--fg);
+  }
+  #help-intro { margin-top:8px; }
+  .help b { color:var(--fg); }
+  .help-warn { color:var(--b); }
+  .hl-a { color:var(--a); font-weight:700; }
+  .hl-b { color:var(--b); font-weight:700; }
+  .hl-c { color:var(--c); font-weight:700; }
   .note { color: var(--muted); font-size: 12px; margin: 6px 0 18px; padding: 8px 12px; background: var(--panel2); border-left: 3px solid var(--accent2); border-radius: 4px; }
   .kpis { display:grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin-bottom: 20px; }
   .kpi { background: var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
@@ -81,20 +101,42 @@
 </head>
 <body>
   <header>
-    <h1>Chronicle Proof of Asset <span class="sub">— 수집·분석 대시보드</span></h1>
+    <h1>Chronicle Proof of Asset <span class="sub">— 수집·분석 대시보드</span>
+      <button class="help-btn" data-help="intro" aria-label="이 대시보드 설명">?</button></h1>
     <div class="gen" id="gen"></div>
   </header>
+  <div class="help" id="help-intro" hidden>
+    <b>이게 뭔가요?</b> 현실 자산(미국 국채, 회사 대출 등)을 블록체인 토큰으로 만든 펀드 18개의 검증 데이터를
+    매일 자동 수집해, ① 지금 얼마인가 ② 데이터를 믿을 만한가 ③ 투자할 만한가 를 보여줍니다. <b>읽기 전용</b>(거래·송금 없음).<br>
+    <b>알아둘 용어:</b> <b>NAV</b>=토큰 한 개의 가치(1.03이면 3% 상승) · <b>오라클</b>=펀드 가치를 블록체인에 올리는 데이터 배달부 ·
+    <b>검증자 2/25</b>=25명 중 2명 서명하면 값 확정.<br>
+    <span class="help-warn">⚠️ 신뢰 경계 — 이 데이터는 "운용사 보고값이 조작 없이 전달됐다"만 보장합니다. 보고 내용 자체를 독립 회계감사한 것은 아닙니다. 투자 자문이 아닙니다.</span>
+  </div>
   <div class="note" id="note"></div>
   <div class="kpis" id="kpis"></div>
   <div class="grid">
-    <div class="panel" id="p-valuation"><h2>① 밸류에이션</h2><div class="body"></div></div>
-    <div class="panel" id="p-risk"><h2>② 리스크 분해</h2><div class="body"></div></div>
-    <div class="panel" id="p-integrity"><h2>③ 무결성 게이트</h2><div class="body"></div></div>
-    <div class="panel" id="p-benchmark"><h2>④ 벤치마크</h2><div class="body"></div></div>
+    <div class="panel" id="p-valuation"><h2>① 밸류에이션 <button class="help-btn" data-help="valuation" aria-label="설명">?</button></h2>
+      <div class="help" id="help-valuation" hidden>자산별 <b>현재 가치(NAV)</b>와 믿을 만한 값인지 보여줍니다. <b>등급</b>: <span class="hl-a">A</span>=신선·정상, <span class="hl-b">B</span>=조금 오래됨, <span class="hl-c">C</span>=너무 오래되거나 이상. <b>freshness</b>: fresh/stale/expired(갱신 멈춤·주의). <b>검증자 2/25</b>=25명 중 2명 서명하면 확정. 오른쪽 <b>출처</b> 링크로 블록체인에서 원본 값을 직접 확인할 수 있습니다.</div>
+      <div class="body"></div></div>
+    <div class="panel" id="p-risk"><h2>② 리스크 분해 <button class="help-btn" data-help="risk" aria-label="설명">?</button></h2>
+      <div class="help" id="help-risk" hidden>펀드가 담은 실제 증권들의 <b>만기 분포</b>와 <b>가중평균만기(WAM)</b>를 봅니다. 만기가 짧을수록(WAM 작을수록) 금리 변화에 덜 흔들려 안전한 편. <b>look-through(투과)</b> 🎁 = 선물 바구니 두 개를 열었더니 둘 다 사과만 가득이면 사실 몰빵인 것처럼, <b>여러 토큰의 속을 열어 실제로 어디에 얼마나 노출됐는지</b> 합산합니다(예: 국채에 총 얼마).</div>
+      <div class="body"></div></div>
+    <div class="panel" id="p-integrity"><h2>③ 무결성 게이트 <button class="help-btn" data-help="integrity" aria-label="설명">?</button></h2>
+      <div class="help" id="help-integrity" hidden>지금 문제 있는 데이터를 잡아냅니다. 갱신이 멈췄거나(expired), 여러 블록체인에 올라간 같은 자산의 값이 서로 어긋나면(발산) <span class="hl-c">빨간 경고</span>. <span class="hl-a">초록</span>은 "여러 체인에서 값이 일치한다 = 교차검증 통과"라는 뜻입니다.</div>
+      <div class="body"></div></div>
+    <div class="panel" id="p-benchmark"><h2>④ 벤치마크 <button class="help-btn" data-help="benchmark" aria-label="설명">?</button></h2>
+      <div class="help" id="help-benchmark" hidden>"직접 국채 사는 것보다 나은가?"를 봅니다. 토큰 이자(yield)를 <b>같은 만기 미국 국채 금리</b>와 비교한 차이(스프레드)로 판단: <b>국채 펀드</b>는 음수(−)=운용·토큰화 <b>비용</b>(직접 국채가 유리). <b>크레딧·CLO</b>는 양수(+)=<b>신용위험 프리미엄</b>(정상, 위험 감수 대가). <b>주식</b>은 국채 비교 부적합. <span class="hl-b">수동</span> 배지=자동이 아니라 사람이 공개 자료에서 넣은 값(가끔 갱신 필요).</div>
+      <div class="body"></div></div>
   </div>
-  <div class="panel" id="p-track" style="margin-top:16px"><h2>실적 (Track Record)</h2><div class="body"></div></div>
-  <div class="panel" id="p-reliability" style="margin-top:16px"><h2>오라클 신뢰도</h2><div class="body"></div></div>
-  <div class="panel" id="p-sources" style="margin-top:16px"><h2>출처 (Provenance)</h2><div class="body"></div></div>
+  <div class="panel" id="p-track" style="margin-top:16px"><h2>실적 (Track Record) <button class="help-btn" data-help="track" aria-label="설명">?</button></h2>
+    <div class="help" id="help-track" hidden>"광고 말고, 실제로 얼마 벌었나"를 봅니다. 과거 가격 이력으로 <b>실현수익·변동성·최대낙폭</b>을 계산. <b>가장 조심할 지점</b>: 현재 광고 이자와 실제 실현수익이 크게 다를 수 있습니다. 실현이 광고보다 훨씬 낮으면 <span class="hl-c">빨간색</span>(예: "말은 4%인데 실제론 −0.2%"). <b>변동성·최대낙폭이 낮을수록</b> 안정적입니다.</div>
+    <div class="body"></div></div>
+  <div class="panel" id="p-reliability" style="margin-top:16px"><h2>오라클 신뢰도 <button class="help-btn" data-help="reliability" aria-label="설명">?</button></h2>
+    <div class="help" id="help-reliability" hidden>"이 데이터 배달부(오라클)를 믿어도 되나"를 <b>0~100점</b>으로 매깁니다. 신선도·검증자 쿼럼·교차체인 일치·가동률을 종합. 점수 옆 <b>플래그</b>가 약점을 <b>숨기지 않고</b> 그대로 보여줍니다(예: "쿼럼 2 약함"). 점수가 높아도 플래그는 꼭 읽어보세요.</div>
+    <div class="body"></div></div>
+  <div class="panel" id="p-sources" style="margin-top:16px"><h2>출처 (Provenance) <button class="help-btn" data-help="sources" aria-label="설명">?</button></h2>
+    <div class="help" id="help-sources" hidden>"이 숫자, 어디서 왔나"를 모두 밝힙니다. 온체인 값은 블록체인 탐색기 링크로, 오프체인 값은 원본 API 링크로 <b>직접 대조</b>할 수 있습니다. 믿으라고만 하지 않고 <b>확인할 길</b>을 열어둔 겁니다.</div>
+    <div class="body"></div></div>
 
 <script>
 const $ = (s, r=document) => r.querySelector(s);
@@ -103,7 +145,23 @@ const fmtUsd = n => n==null ? "—" : "$" + Math.round(n).toLocaleString();
 const fmtNav = n => n==null ? "—" : (n<10 ? n.toFixed(4) : n.toLocaleString(undefined,{maximumFractionDigits:2}));
 const esc = s => String(s==null?"":s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
+// 각 패널의 ? 버튼 → 해당 설명 토글 (맥락형 도움말)
+function initHelp(){
+  for(const btn of document.querySelectorAll('.help-btn')){
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const key = btn.getAttribute('data-help');
+      const box = document.getElementById('help-'+key);
+      if(!box) return;
+      const show = box.hidden;
+      box.hidden = !show;
+      btn.classList.toggle('on', show);
+    });
+  }
+}
+
 async function main(){
+  initHelp();
   let d;
   try {
     const r = await fetch("./analysis.json", {cache:"no-store"});
