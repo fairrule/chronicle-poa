@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T04:47:26.801Z",
+  "generated_at": "2026-07-14T08:16:43.587Z",
   "note": "attestation=전송 무결성이지 독립 회계감사 아님 (명세 부록 B)",
   "sources": {
     "registry_addresses": {
@@ -393,7 +393,7 @@
       "issuer": "Centrifuge",
       "chain": "base",
       "asset_class": "equity",
-      "nav": 752.8333291787774,
+      "nav": 754.3898176977445,
       "yield_7d": null,
       "freshness": "fresh",
       "trust_grade": "A",
