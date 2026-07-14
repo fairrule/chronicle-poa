@@ -1,0 +1,1100 @@
+{
+  "generated_at": "2026-07-14T01:55:35.788Z",
+  "note": "attestation=전송 무결성이지 독립 회계감사 아님 (명세 부록 B)",
+  "sources": {
+    "registry_addresses": {
+      "description": "오라클 adapter/router 주소",
+      "origin": "Chronicle 공식 문서 (2026-07 기준)",
+      "stored_in": "config/oracles.yaml",
+      "verification": "런타임에 온체인 decimals() 응답으로 검증 (scripts/verify_addresses.ts)"
+    },
+    "onchain_nav": {
+      "description": "NAV·roundId·updatedAt",
+      "method": "eth_call latestRoundData()/decimals()",
+      "target": "Chronicle VAO Chainlink adapter 또는 router (자산별 주소는 각 asset.source.nav)",
+      "rpc": "무료 공용 RPC (config/rpc.yaml, 다중 fallback)",
+      "trust_boundary": "커스터디언 보고값의 온체인 전송 무결성. 독립 회계감사 아님."
+    },
+    "onchain_attestation": {
+      "description": "검증자 집합·쿼럼(bar)·피드명·latestPoke",
+      "method": "eth_call barECDSA()/validatorsECDSA()/name()/latestPoke()",
+      "target": "Chronicle VAO consumer (자산별 주소는 각 asset.source.attestation)"
+    },
+    "offchain_holdings": [
+      {
+        "oracle_id": "superstate_ustb_eth",
+        "provider": "superstate-api",
+        "url": "https://api.superstate.com/v2/funds/1/holdings",
+        "type": "json_http",
+        "note": "발행사 공개 데이터 — 온체인 read-only 경계 밖"
+      }
+    ],
+    "benchmark": {
+      "risk_free": {
+        "description": "위험자유금리 (US Treasury par yield curve)",
+        "provider": "US Treasury",
+        "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates",
+        "note": "무료·무인증 XML. 스프레드 = 토큰 yield − 국채금리"
+      },
+      "token_yield": {
+        "description": "토큰 yield (자산별 소스)",
+        "config": "config/benchmarks.yaml"
+      }
+    }
+  },
+  "asset_count": 15,
+  "assets": [
+    {
+      "oracle_id": "centrifuge_acrdx_eth",
+      "ticker": "ACRDX",
+      "issuer": "Centrifuge",
+      "chain": "ethereum",
+      "asset_class": "credit",
+      "nav": 1.02040733427196,
+      "yield_7d": 4.086679095281055,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_ACRDX/v2"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 274,
+        "first_date": "2025-10-14",
+        "last_date": "2026-07-14",
+        "span_days": 273,
+        "total_return_pct": 2.0407,
+        "annualized_return_pct": 2.7378,
+        "volatility_pct": 1.2917,
+        "max_drawdown_pct": -0.9523,
+        "uptime": 1,
+        "latest_yield_pct": 4.086679095281055
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0x486A0A7676e966a77A32359134F11D95BBcF77dd",
+          "explorer": "https://etherscan.io/address/0x486A0A7676e966a77A32359134F11D95BBcF77dd"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x9a3bF392f86acd1b1EC07d026B326302eAED7488",
+          "explorer": "https://etherscan.io/address/0x9a3bF392f86acd1b1EC07d026B326302eAED7488"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_decrdx_monad",
+      "ticker": "deCRDX",
+      "issuer": "Centrifuge",
+      "chain": "monad",
+      "asset_class": "credit",
+      "nav": 0.999306,
+      "yield_7d": 4.082281309086247,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deCRDX"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 155,
+        "first_date": "2026-02-10",
+        "last_date": "2026-07-14",
+        "span_days": 154,
+        "total_return_pct": -0.0694,
+        "annualized_return_pct": -0.1644,
+        "volatility_pct": 1.3246,
+        "max_drawdown_pct": -0.9513,
+        "uptime": 1,
+        "latest_yield_pct": 4.082281309086247
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "monad",
+          "address": "0xAB13ABE3D2ecD94eB74DB2F35Cc4C5070CA949bB",
+          "explorer": "https://explorer.monad.xyz/address/0xAB13ABE3D2ecD94eB74DB2F35Cc4C5070CA949bB"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "monad",
+          "consumer_address": "0xfb1Fd07D5eE7Fa6Fe4bb1b0DfaD4D7B2d7c33135",
+          "explorer": "https://explorer.monad.xyz/address/0xfb1Fd07D5eE7Fa6Fe4bb1b0DfaD4D7B2d7c33135"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_base",
+      "ticker": "deJAAA",
+      "issuer": "Centrifuge",
+      "chain": "base",
+      "asset_class": "clo",
+      "nav": 1.039081,
+      "yield_7d": 3.9318221016324233,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deJAAA"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 301,
+        "first_date": "2025-09-17",
+        "last_date": "2026-07-14",
+        "span_days": 300,
+        "total_return_pct": 3.3837,
+        "annualized_return_pct": 4.1318,
+        "volatility_pct": 0.4055,
+        "max_drawdown_pct": -0.2102,
+        "uptime": 1,
+        "latest_yield_pct": 3.9318221016324233
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "base",
+          "address": "0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694",
+          "explorer": "https://basescan.org/address/0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "base",
+          "consumer_address": "0x0dB42C3199211835AFc423F39226087A4509C53f",
+          "explorer": "https://basescan.org/address/0x0dB42C3199211835AFc423F39226087A4509C53f"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_eth",
+      "ticker": "deJAAA",
+      "issuer": "Centrifuge",
+      "chain": "ethereum",
+      "asset_class": "clo",
+      "nav": 1.039081,
+      "yield_7d": 3.9318221016324233,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deJAAA"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 301,
+        "first_date": "2025-09-17",
+        "last_date": "2026-07-14",
+        "span_days": 300,
+        "total_return_pct": 3.3837,
+        "annualized_return_pct": 4.1318,
+        "volatility_pct": 0.4055,
+        "max_drawdown_pct": -0.2102,
+        "uptime": 1,
+        "latest_yield_pct": 3.9318221016324233
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694",
+          "explorer": "https://etherscan.io/address/0xEC41d6BA0fCdae0E41A521F510907BF7E4a87694"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x595ececCEa09EE8Bfa8DB33120f7E114E493E434",
+          "explorer": "https://etherscan.io/address/0x595ececCEa09EE8Bfa8DB33120f7E114E493E434"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_monad",
+      "ticker": "deJAAA",
+      "issuer": "Centrifuge",
+      "chain": "monad",
+      "asset_class": "clo",
+      "nav": 1.039419,
+      "yield_7d": 3.9318221016324233,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deJAAA"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 301,
+        "first_date": "2025-09-17",
+        "last_date": "2026-07-14",
+        "span_days": 300,
+        "total_return_pct": 3.4173,
+        "annualized_return_pct": 4.173,
+        "volatility_pct": 0.4036,
+        "max_drawdown_pct": -0.2102,
+        "uptime": 1,
+        "latest_yield_pct": 3.9318221016324233
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "monad",
+          "address": "0x9ff1007cbb2D793C6837E67Cd6B3AfEb62529ED0",
+          "explorer": "https://explorer.monad.xyz/address/0x9ff1007cbb2D793C6837E67Cd6B3AfEb62529ED0"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "monad",
+          "consumer_address": "0xC41E28DAc60e2719f337287f71EEC47C6f12BFE8",
+          "explorer": "https://explorer.monad.xyz/address/0xC41E28DAc60e2719f337287f71EEC47C6f12BFE8"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_dejtrsy_eth",
+      "ticker": "deJTRSY",
+      "issuer": "Centrifuge",
+      "chain": "ethereum",
+      "asset_class": "treasury",
+      "nav": 1.030425,
+      "yield_7d": 3.5388182667359387,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deJTRSY"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 300,
+        "first_date": "2025-09-18",
+        "last_date": "2026-07-14",
+        "span_days": 299,
+        "total_return_pct": 2.7836,
+        "annualized_return_pct": 3.4084,
+        "volatility_pct": 0.1728,
+        "max_drawdown_pct": -0.0269,
+        "uptime": 1,
+        "latest_yield_pct": 3.5388182667359387
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0xb71e0Da4C6853718C04dAf58CA2ec22eB0fC4517",
+          "explorer": "https://etherscan.io/address/0xb71e0Da4C6853718C04dAf58CA2ec22eB0fC4517"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x9BD862ee72115Bae93fEE1b5d8aDbFD566da6eF1",
+          "explorer": "https://etherscan.io/address/0x9BD862ee72115Bae93fEE1b5d8aDbFD566da6eF1"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_dejtrsy_monad",
+      "ticker": "deJTRSY",
+      "issuer": "Centrifuge",
+      "chain": "monad",
+      "asset_class": "treasury",
+      "nav": 1.030701,
+      "yield_7d": 3.5388182667359387,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deJTRSY"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 300,
+        "first_date": "2025-09-18",
+        "last_date": "2026-07-14",
+        "span_days": 299,
+        "total_return_pct": 2.8111,
+        "annualized_return_pct": 3.4422,
+        "volatility_pct": 0.1698,
+        "max_drawdown_pct": -0.0001,
+        "uptime": 1,
+        "latest_yield_pct": 3.5388182667359387
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "monad",
+          "address": "0x1D2d52A40bDa48F2ae32F5f22F30C854A7312D96",
+          "explorer": "https://explorer.monad.xyz/address/0x1D2d52A40bDa48F2ae32F5f22F30C854A7312D96"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "monad",
+          "consumer_address": "0x925BE0866b51D32Ac3Dcca368dC818f89aF778ED",
+          "explorer": "https://explorer.monad.xyz/address/0x925BE0866b51D32Ac3Dcca368dC818f89aF778ED"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_despxa724_base",
+      "ticker": "deSPXA_724",
+      "issuer": "Centrifuge",
+      "chain": "base",
+      "asset_class": "equity",
+      "nav": 753.2550873581104,
+      "yield_7d": null,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deSPXA_7_24"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "base",
+          "address": "0x97165Ad36D96567a521958cc46914160B968752b",
+          "explorer": "https://basescan.org/address/0x97165Ad36D96567a521958cc46914160B968752b"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "base",
+          "consumer_address": "0x3d3774610BfC1570Fa4e71Af3EF60D1ADe4Efd2f",
+          "explorer": "https://basescan.org/address/0x3d3774610BfC1570Fa4e71Af3EF60D1ADe4Efd2f"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_despxa_base",
+      "ticker": "deSPXA",
+      "issuer": "Centrifuge",
+      "chain": "base",
+      "asset_class": "equity",
+      "nav": 757.485408,
+      "yield_7d": null,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Centrifuge_deSPXA"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "base",
+          "address": "0x914b2E2953C4EdB87C164Fe1fddBdB3F6F34F971",
+          "explorer": "https://basescan.org/address/0x914b2E2953C4EdB87C164Fe1fddBdB3F6F34F971"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "base",
+          "consumer_address": "0x67e58B26a1847fd474C5F2CCF5E662A0105cE3Dd",
+          "explorer": "https://basescan.org/address/0x67e58B26a1847fd474C5F2CCF5E662A0105cE3Dd"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_jaaa_eth",
+      "ticker": "JAAA",
+      "issuer": "Centrifuge",
+      "chain": "ethereum",
+      "asset_class": "clo",
+      "nav": 1.040903,
+      "yield_7d": 3.933762287503089,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 25,
+        "feed_name": "VAO::Centrifuge_JAAA"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 301,
+        "first_date": "2025-09-17",
+        "last_date": "2026-07-14",
+        "span_days": 300,
+        "total_return_pct": 3.4166,
+        "annualized_return_pct": 4.1721,
+        "volatility_pct": 0.4139,
+        "max_drawdown_pct": -0.2216,
+        "uptime": 1,
+        "latest_yield_pct": 3.933762287503089
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0x5A4BEEB8854442D69267C9a0a3A17BE60fDded04",
+          "explorer": "https://etherscan.io/address/0x5A4BEEB8854442D69267C9a0a3A17BE60fDded04"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x02cf8C9fBa24d79886dAc40cb620f0930C6E8eC0",
+          "explorer": "https://etherscan.io/address/0x02cf8C9fBa24d79886dAc40cb620f0930C6E8eC0"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "centrifuge_jtrsy_eth",
+      "ticker": "JTRSY",
+      "issuer": "Centrifuge",
+      "chain": "ethereum",
+      "asset_class": "treasury",
+      "nav": 1.109436,
+      "yield_7d": 3.538740819432451,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 25,
+        "feed_name": "VAO::Centrifuge_JTRSY"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": {
+        "n_obs": 300,
+        "first_date": "2025-09-18",
+        "last_date": "2026-07-14",
+        "span_days": 299,
+        "total_return_pct": 2.8119,
+        "annualized_return_pct": 3.4432,
+        "volatility_pct": 0.1594,
+        "max_drawdown_pct": -0.0001,
+        "uptime": 1,
+        "latest_yield_pct": 3.538740819432451
+      },
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0x22d9527ad4489D3C760A6380a3c4dD06114B09aE",
+          "explorer": "https://etherscan.io/address/0x22d9527ad4489D3C760A6380a3c4dD06114B09aE"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x59ef4BE3eDDF0270c4878b7B945bbeE13fb33d0D",
+          "explorer": "https://etherscan.io/address/0x59ef4BE3eDDF0270c4878b7B945bbeE13fb33d0D"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "galaxy_clo_eth",
+      "ticker": "CLO",
+      "issuer": "Galaxy",
+      "chain": "ethereum",
+      "asset_class": "clo",
+      "nav": 2.0899826066712928,
+      "yield_7d": null,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Galaxy_CLO"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0xA9D9fBB82900ec4F55Fe8d5213387456b7336974",
+          "explorer": "https://etherscan.io/address/0xA9D9fBB82900ec4F55Fe8d5213387456b7336974"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0xd226701Ec8d883a8ef663a920FC266Ce9f3e2cdb",
+          "explorer": "https://etherscan.io/address/0xd226701Ec8d883a8ef663a920FC266Ce9f3e2cdb"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "securitize_buidl_eth",
+      "ticker": "BUIDL",
+      "issuer": "Securitize",
+      "chain": "ethereum",
+      "asset_class": "treasury",
+      "nav": 1,
+      "yield_7d": 3.4,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 25,
+        "feed_name": "VAO::Securitize_BUIDL"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0x35cE8603C90A4286CF91C4c05EfaE4565Daf7eFb",
+          "explorer": "https://etherscan.io/address/0x35cE8603C90A4286CF91C4c05EfaE4565Daf7eFb"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x2d6db2116aD7a6e203E72C8DCCfFf23f5315b0Dd",
+          "explorer": "https://etherscan.io/address/0x2d6db2116aD7a6e203E72C8DCCfFf23f5315b0Dd"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "securitize_stac_eth",
+      "ticker": "STAC",
+      "issuer": "Securitize",
+      "chain": "ethereum",
+      "asset_class": "unknown",
+      "nav": 1020.597761,
+      "yield_7d": null,
+      "freshness": "expired",
+      "trust_grade": "C",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 24,
+        "feed_name": "VAO::Securitize_STAC"
+      },
+      "holdings_count": 0,
+      "holdings_as_of": null,
+      "wam_days": null,
+      "maturity_buckets": null,
+      "type_concentration": null,
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0xc5fc229d60c70420A0c5a64d0A7f59aA7F6f081d",
+          "explorer": "https://etherscan.io/address/0xc5fc229d60c70420A0c5a64d0A7f59aA7F6f081d"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x9D77E4cA90E25114AFb24dF908f5918f572D958B",
+          "explorer": "https://etherscan.io/address/0x9D77E4cA90E25114AFb24dF908f5918f572D958B"
+        },
+        "holdings": null
+      }
+    },
+    {
+      "oracle_id": "superstate_ustb_eth",
+      "ticker": "USTB",
+      "issuer": "Superstate",
+      "chain": "ethereum",
+      "asset_class": "treasury",
+      "nav": 11.141483,
+      "yield_7d": 3.5087579730729206,
+      "freshness": "fresh",
+      "trust_grade": "A",
+      "custody_status": "unknown",
+      "attestation": {
+        "quorum": 2,
+        "validator_count": 25,
+        "feed_name": "VAO::Superstate_USTB"
+      },
+      "holdings_count": 13,
+      "holdings_as_of": "2026-05-22",
+      "wam_days": 32.03757563927386,
+      "maturity_buckets": {
+        "0-1m": 52.94,
+        "1-3m": 49.52,
+        "3-6m": 0,
+        "6-12m": 0,
+        "12m+": 0
+      },
+      "type_concentration": {
+        "treasury": 102.46
+      },
+      "track_record": null,
+      "source": {
+        "nav": {
+          "method": "onchain eth_call: latestRoundData()",
+          "chain": "ethereum",
+          "address": "0x5D2edCaD212E2f480CD8E97d839b7D539249b6E5",
+          "explorer": "https://etherscan.io/address/0x5D2edCaD212E2f480CD8E97d839b7D539249b6E5"
+        },
+        "attestation": {
+          "method": "onchain eth_call: barECDSA()/validatorsECDSA()/name()/latestPoke()",
+          "chain": "ethereum",
+          "consumer_address": "0x15Fe07Bc9019a0dEc7De49c29E816261a047d252",
+          "explorer": "https://etherscan.io/address/0x15Fe07Bc9019a0dEc7De49c29E816261a047d252"
+        },
+        "holdings": {
+          "method": "offchain json_http",
+          "provider": "superstate-api",
+          "url": "https://api.superstate.com/v2/funds/1/holdings",
+          "as_of": "2026-05-22"
+        }
+      }
+    }
+  ],
+  "cross_chain": [
+    {
+      "ticker": "deJAAA",
+      "chains": [
+        "base",
+        "ethereum",
+        "monad"
+      ],
+      "navs": [
+        1.039081,
+        1.039081,
+        1.039419
+      ],
+      "max_divergence_pct": 0.0325,
+      "flag": false
+    },
+    {
+      "ticker": "deJTRSY",
+      "chains": [
+        "ethereum",
+        "monad"
+      ],
+      "navs": [
+        1.030425,
+        1.030701
+      ],
+      "max_divergence_pct": 0.0268,
+      "flag": false
+    }
+  ],
+  "look_through": {
+    "total_market_value": 1001093065,
+    "by_instrument_type": {
+      "treasury": 1001093065
+    },
+    "source_oracles": [
+      "superstate_ustb_eth"
+    ],
+    "holdings_total": 13
+  },
+  "integrity_gate": {
+    "ok_count": 14,
+    "flagged_count": 1,
+    "flagged": [
+      {
+        "oracle_id": "securitize_stac_eth",
+        "reason": "freshness=expired",
+        "freshness": "expired",
+        "trust_grade": "C"
+      }
+    ],
+    "cross_chain_divergence": []
+  },
+  "oracle_reliability": [
+    {
+      "oracle_id": "securitize_stac_eth",
+      "ticker": "STAC",
+      "chain": "ethereum",
+      "score": 20,
+      "grade": "low",
+      "freshness": "expired",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "데이터 expired (>72h) — 갱신 중단",
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_acrdx_eth",
+      "ticker": "ACRDX",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_decrdx_monad",
+      "ticker": "deCRDX",
+      "chain": "monad",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_base",
+      "ticker": "deJAAA",
+      "chain": "base",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_eth",
+      "ticker": "deJAAA",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_dejaaa_monad",
+      "ticker": "deJAAA",
+      "chain": "monad",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_dejtrsy_eth",
+      "ticker": "deJTRSY",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_dejtrsy_monad",
+      "ticker": "deJTRSY",
+      "chain": "monad",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_despxa_base",
+      "ticker": "deSPXA",
+      "chain": "base",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_despxa724_base",
+      "ticker": "deSPXA_724",
+      "chain": "base",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_jaaa_eth",
+      "ticker": "JAAA",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 25,
+      "flags": [
+        "attestation 약함 (쿼럼 2/25)"
+      ]
+    },
+    {
+      "oracle_id": "centrifuge_jtrsy_eth",
+      "ticker": "JTRSY",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 25,
+      "flags": [
+        "attestation 약함 (쿼럼 2/25)"
+      ]
+    },
+    {
+      "oracle_id": "galaxy_clo_eth",
+      "ticker": "CLO",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 24,
+      "flags": [
+        "attestation 약함 (쿼럼 2/24)"
+      ]
+    },
+    {
+      "oracle_id": "securitize_buidl_eth",
+      "ticker": "BUIDL",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 25,
+      "flags": [
+        "attestation 약함 (쿼럼 2/25)"
+      ]
+    },
+    {
+      "oracle_id": "superstate_ustb_eth",
+      "ticker": "USTB",
+      "chain": "ethereum",
+      "score": 80,
+      "grade": "high",
+      "freshness": "fresh",
+      "quorum": 2,
+      "validator_count": 25,
+      "flags": [
+        "attestation 약함 (쿼럼 2/25)"
+      ]
+    }
+  ],
+  "benchmark": {
+    "risk_free_curve": {
+      "as_of": "2026-07-13",
+      "source": "us-treasury",
+      "rates": {
+        "m1": 3.73,
+        "m3": 3.89,
+        "m6": 4.03,
+        "y1": 4.12
+      }
+    },
+    "note": "국채=스프레드는 토큰화·운용 비용. 크레딧/CLO=스프레드는 신용위험 프리미엄. CLO는 변동금리라 국채 벤치는 근사.",
+    "spreads": [
+      {
+        "oracle_id": "centrifuge_acrdx_eth",
+        "ticker": "ACRDX",
+        "asset_class": "credit",
+        "token_yield_pct": 4.086679095281055,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": 20,
+        "verdict": "신용 스프레드 +20bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+      },
+      {
+        "oracle_id": "securitize_buidl_eth",
+        "ticker": "BUIDL",
+        "asset_class": "treasury",
+        "token_yield_pct": 3.4,
+        "yield_as_of": "2026-07-13",
+        "yield_source": "manual · rwa.xyz 7D APY",
+        "is_manual": true,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": -49,
+        "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
+      },
+      {
+        "oracle_id": "centrifuge_decrdx_monad",
+        "ticker": "deCRDX",
+        "asset_class": "credit",
+        "token_yield_pct": 4.082281309086247,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": 19,
+        "verdict": "신용 스프레드 +19bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+      },
+      {
+        "oracle_id": "centrifuge_dejaaa_base",
+        "ticker": "deJAAA",
+        "asset_class": "clo",
+        "token_yield_pct": 3.9318221016324233,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": 4,
+        "verdict": "신용 스프레드 +4bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+      },
+      {
+        "oracle_id": "centrifuge_dejtrsy_eth",
+        "ticker": "deJTRSY",
+        "asset_class": "treasury",
+        "token_yield_pct": 3.5388182667359387,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": -35,
+        "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
+      },
+      {
+        "oracle_id": "centrifuge_jaaa_eth",
+        "ticker": "JAAA",
+        "asset_class": "clo",
+        "token_yield_pct": 3.933762287503089,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": 4,
+        "verdict": "신용 스프레드 +4bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+      },
+      {
+        "oracle_id": "centrifuge_jtrsy_eth",
+        "ticker": "JTRSY",
+        "asset_class": "treasury",
+        "token_yield_pct": 3.538740819432451,
+        "yield_as_of": "2026-07-14",
+        "yield_source": "centrifuge-graphql",
+        "is_manual": false,
+        "benchmark_tenor": "m3",
+        "benchmark_pct": 3.89,
+        "spread_bps": -35,
+        "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
+      },
+      {
+        "oracle_id": "superstate_ustb_eth",
+        "ticker": "USTB",
+        "asset_class": "treasury",
+        "token_yield_pct": 3.5087579730729206,
+        "yield_as_of": "2026-07-12",
+        "yield_source": "superstate-api",
+        "is_manual": false,
+        "benchmark_tenor": "m1",
+        "benchmark_pct": 3.73,
+        "spread_bps": -22,
+        "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
+      }
+    ]
+  }
+}
