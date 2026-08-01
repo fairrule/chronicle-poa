@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T08:56:35.657Z",
+  "generated_at": "2026-08-01T08:27:25.569Z",
   "note": "attestation=전송 무결성이지 독립 회계감사 아님 (명세 부록 B)",
   "sources": {
     "registry_addresses": {
@@ -50,8 +50,8 @@
       "issuer": "Centrifuge",
       "chain": "ethereum",
       "asset_class": "credit",
-      "nav": 1.01949564344774,
-      "yield_7d": 0.6849866064109822,
+      "nav": 1.01959532540681,
+      "yield_7d": 1.2038125601110463,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -66,16 +66,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 291,
+        "n_obs": 292,
         "first_date": "2025-10-14",
-        "last_date": "2026-07-31",
-        "span_days": 290,
-        "total_return_pct": 1.9496,
-        "annualized_return_pct": 2.4599,
-        "volatility_pct": 1.2633,
+        "last_date": "2026-08-01",
+        "span_days": 291,
+        "total_return_pct": 1.9595,
+        "annualized_return_pct": 2.4639,
+        "volatility_pct": 1.2611,
         "max_drawdown_pct": -0.9523,
         "uptime": 1,
-        "latest_yield_pct": 0.6849866064109822
+        "latest_yield_pct": 1.2038125601110463
       },
       "source": {
         "nav": {
@@ -99,8 +99,8 @@
       "issuer": "Centrifuge",
       "chain": "monad",
       "asset_class": "credit",
-      "nav": 0.998414,
-      "yield_7d": 0.6842744686442928,
+      "nav": 0.998511,
+      "yield_7d": 1.202539117312525,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -115,16 +115,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 172,
+        "n_obs": 173,
         "first_date": "2026-02-10",
-        "last_date": "2026-07-31",
-        "span_days": 171,
-        "total_return_pct": -0.1586,
-        "annualized_return_pct": -0.3382,
-        "volatility_pct": 1.2726,
+        "last_date": "2026-08-01",
+        "span_days": 172,
+        "total_return_pct": -0.1489,
+        "annualized_return_pct": -0.3157,
+        "volatility_pct": 1.2689,
         "max_drawdown_pct": -0.9513,
         "uptime": 1,
-        "latest_yield_pct": 0.6842744686442928
+        "latest_yield_pct": 1.202539117312525
       },
       "source": {
         "nav": {
@@ -148,8 +148,8 @@
       "issuer": "Centrifuge",
       "chain": "base",
       "asset_class": "clo",
-      "nav": 1.041111,
-      "yield_7d": 4.047596933196383,
+      "nav": 1.041261,
+      "yield_7d": 3.970874325265518,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -164,16 +164,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 318,
+        "n_obs": 319,
         "first_date": "2025-09-17",
-        "last_date": "2026-07-31",
-        "span_days": 317,
-        "total_return_pct": 3.5857,
-        "annualized_return_pct": 4.1397,
-        "volatility_pct": 0.396,
+        "last_date": "2026-08-01",
+        "span_days": 318,
+        "total_return_pct": 3.6006,
+        "annualized_return_pct": 4.1436,
+        "volatility_pct": 0.3954,
         "max_drawdown_pct": -0.2102,
         "uptime": 1,
-        "latest_yield_pct": 4.047596933196383
+        "latest_yield_pct": 3.970874325265518
       },
       "source": {
         "nav": {
@@ -197,8 +197,8 @@
       "issuer": "Centrifuge",
       "chain": "ethereum",
       "asset_class": "clo",
-      "nav": 1.041111,
-      "yield_7d": 4.047596933196383,
+      "nav": 1.041261,
+      "yield_7d": 3.970874325265518,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -213,16 +213,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 318,
+        "n_obs": 319,
         "first_date": "2025-09-17",
-        "last_date": "2026-07-31",
-        "span_days": 317,
-        "total_return_pct": 3.5857,
-        "annualized_return_pct": 4.1397,
-        "volatility_pct": 0.396,
+        "last_date": "2026-08-01",
+        "span_days": 318,
+        "total_return_pct": 3.6006,
+        "annualized_return_pct": 4.1436,
+        "volatility_pct": 0.3954,
         "max_drawdown_pct": -0.2102,
         "uptime": 1,
-        "latest_yield_pct": 4.047596933196383
+        "latest_yield_pct": 3.970874325265518
       },
       "source": {
         "nav": {
@@ -246,8 +246,8 @@
       "issuer": "Centrifuge",
       "chain": "monad",
       "asset_class": "clo",
-      "nav": 1.041261,
-      "yield_7d": 4.047596933196383,
+      "nav": 1.041415,
+      "yield_7d": 3.970874325265518,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -262,16 +262,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 318,
+        "n_obs": 319,
         "first_date": "2025-09-17",
-        "last_date": "2026-07-31",
-        "span_days": 317,
-        "total_return_pct": 3.6006,
-        "annualized_return_pct": 4.157,
-        "volatility_pct": 0.3955,
+        "last_date": "2026-08-01",
+        "span_days": 318,
+        "total_return_pct": 3.6159,
+        "annualized_return_pct": 4.1613,
+        "volatility_pct": 0.3949,
         "max_drawdown_pct": -0.2102,
         "uptime": 1,
-        "latest_yield_pct": 4.047596933196383
+        "latest_yield_pct": 3.970874325265518
       },
       "source": {
         "nav": {
@@ -295,8 +295,8 @@
       "issuer": "Centrifuge",
       "chain": "ethereum",
       "asset_class": "treasury",
-      "nav": 1.032166,
-      "yield_7d": 3.5729832597892934,
+      "nav": 1.032385,
+      "yield_7d": 3.565179457108055,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -311,16 +311,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 317,
+        "n_obs": 318,
         "first_date": "2025-09-18",
-        "last_date": "2026-07-31",
-        "span_days": 316,
-        "total_return_pct": 2.9572,
-        "annualized_return_pct": 3.4236,
-        "volatility_pct": 0.1709,
-        "max_drawdown_pct": -0.0213,
+        "last_date": "2026-08-01",
+        "span_days": 317,
+        "total_return_pct": 2.9791,
+        "annualized_return_pct": 3.4378,
+        "volatility_pct": 0.1694,
+        "max_drawdown_pct": -0.0102,
         "uptime": 1,
-        "latest_yield_pct": 3.5729832597892934
+        "latest_yield_pct": 3.565179457108055
       },
       "source": {
         "nav": {
@@ -344,8 +344,8 @@
       "issuer": "Centrifuge",
       "chain": "monad",
       "asset_class": "treasury",
-      "nav": 1.032385,
-      "yield_7d": 3.5729832597892934,
+      "nav": 1.03249,
+      "yield_7d": 3.565179457108055,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -360,16 +360,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 317,
+        "n_obs": 318,
         "first_date": "2025-09-18",
-        "last_date": "2026-07-31",
-        "span_days": 316,
-        "total_return_pct": 2.9791,
-        "annualized_return_pct": 3.4489,
-        "volatility_pct": 0.1689,
+        "last_date": "2026-08-01",
+        "span_days": 317,
+        "total_return_pct": 2.9896,
+        "annualized_return_pct": 3.45,
+        "volatility_pct": 0.1687,
         "max_drawdown_pct": -0.0001,
         "uptime": 1,
-        "latest_yield_pct": 3.5729832597892934
+        "latest_yield_pct": 3.565179457108055
       },
       "source": {
         "nav": {
@@ -393,7 +393,7 @@
       "issuer": "Centrifuge",
       "chain": "base",
       "asset_class": "equity",
-      "nav": 751.9089286110394,
+      "nav": 750.653142660621,
       "yield_7d": null,
       "freshness": "fresh",
       "trust_grade": "A",
@@ -409,13 +409,13 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
-        "total_return_pct": -0.3289,
-        "annualized_return_pct": -6.8282,
-        "volatility_pct": 12.0299,
+        "last_date": "2026-08-01",
+        "span_days": 18,
+        "total_return_pct": -0.4953,
+        "annualized_return_pct": -9.5787,
+        "volatility_pct": 11.6843,
         "max_drawdown_pct": -2.846,
         "uptime": 1,
         "latest_yield_pct": null
@@ -442,7 +442,7 @@
       "issuer": "Centrifuge",
       "chain": "base",
       "asset_class": "equity",
-      "nav": 735.866237,
+      "nav": 747.625489,
       "yield_7d": null,
       "freshness": "fresh",
       "trust_grade": "A",
@@ -458,13 +458,13 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
-        "total_return_pct": -2.8541,
-        "annualized_return_pct": -46.297,
-        "volatility_pct": 9.6123,
+        "last_date": "2026-08-01",
+        "span_days": 18,
+        "total_return_pct": -1.3017,
+        "annualized_return_pct": -23.3317,
+        "volatility_pct": 11.4301,
         "max_drawdown_pct": -3.2659,
         "uptime": 1,
         "latest_yield_pct": null
@@ -492,7 +492,7 @@
       "chain": "ethereum",
       "asset_class": "clo",
       "nav": 1.04277,
-      "yield_7d": 4.0498086550501045,
+      "yield_7d": 3.9730575435623567,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -507,16 +507,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 318,
+        "n_obs": 319,
         "first_date": "2025-09-17",
-        "last_date": "2026-07-31",
-        "span_days": 317,
+        "last_date": "2026-08-01",
+        "span_days": 318,
         "total_return_pct": 3.6021,
-        "annualized_return_pct": 4.1587,
-        "volatility_pct": 0.4054,
+        "annualized_return_pct": 4.1454,
+        "volatility_pct": 0.4053,
         "max_drawdown_pct": -0.2216,
         "uptime": 1,
-        "latest_yield_pct": 4.0498086550501045
+        "latest_yield_pct": 3.9730575435623567
       },
       "source": {
         "nav": {
@@ -540,8 +540,8 @@
       "issuer": "Centrifuge",
       "chain": "ethereum",
       "asset_class": "treasury",
-      "nav": 1.111249,
-      "yield_7d": 3.573374365806499,
+      "nav": 1.111362,
+      "yield_7d": 3.565571983794701,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -556,16 +556,16 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 317,
+        "n_obs": 318,
         "first_date": "2025-09-18",
-        "last_date": "2026-07-31",
-        "span_days": 316,
-        "total_return_pct": 2.98,
-        "annualized_return_pct": 3.4499,
-        "volatility_pct": 0.1585,
+        "last_date": "2026-08-01",
+        "span_days": 317,
+        "total_return_pct": 2.9904,
+        "annualized_return_pct": 3.451,
+        "volatility_pct": 0.1583,
         "max_drawdown_pct": 0,
         "uptime": 1,
-        "latest_yield_pct": 3.573374365806499
+        "latest_yield_pct": 3.565571983794701
       },
       "source": {
         "nav": {
@@ -589,7 +589,7 @@
       "issuer": "Galaxy",
       "chain": "ethereum",
       "asset_class": "clo",
-      "nav": 2.3626672594979903,
+      "nav": 2.220375196870638,
       "yield_7d": null,
       "freshness": "fresh",
       "trust_grade": "A",
@@ -605,14 +605,14 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
-        "total_return_pct": 13.0472,
-        "annualized_return_pct": 1291.6217,
-        "volatility_pct": 34.0955,
-        "max_drawdown_pct": -2.9157,
+        "last_date": "2026-08-01",
+        "span_days": 18,
+        "total_return_pct": 6.2389,
+        "annualized_return_pct": 241.1732,
+        "volatility_pct": 41.6577,
+        "max_drawdown_pct": -6.0225,
         "uptime": 1,
         "latest_yield_pct": null
       },
@@ -654,10 +654,10 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
+        "last_date": "2026-08-01",
+        "span_days": 18,
         "total_return_pct": 0,
         "annualized_return_pct": 0,
         "volatility_pct": 0,
@@ -687,7 +687,7 @@
       "issuer": "Securitize",
       "chain": "ethereum",
       "asset_class": "unknown",
-      "nav": 1025.717218,
+      "nav": 1026.007187,
       "yield_7d": null,
       "freshness": "fresh",
       "trust_grade": "A",
@@ -703,13 +703,13 @@
       "maturity_buckets": null,
       "type_concentration": null,
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
-        "total_return_pct": 0.5016,
-        "annualized_return_pct": 11.3413,
-        "volatility_pct": 1.128,
+        "last_date": "2026-08-01",
+        "span_days": 18,
+        "total_return_pct": 0.53,
+        "annualized_return_pct": 11.315,
+        "volatility_pct": 1.0943,
         "max_drawdown_pct": 0,
         "uptime": 1,
         "latest_yield_pct": null
@@ -736,8 +736,8 @@
       "issuer": "Superstate",
       "chain": "ethereum",
       "asset_class": "treasury",
-      "nav": 11.161771,
-      "yield_7d": 3.4978053634292072,
+      "nav": 11.162843,
+      "yield_7d": 3.5023624722903826,
       "freshness": "fresh",
       "trust_grade": "A",
       "custody_status": "unknown",
@@ -760,16 +760,16 @@
         "treasury": 99.93
       },
       "track_record": {
-        "n_obs": 18,
+        "n_obs": 19,
         "first_date": "2026-07-14",
-        "last_date": "2026-07-31",
-        "span_days": 17,
-        "total_return_pct": 0.1821,
-        "annualized_return_pct": 3.9834,
-        "volatility_pct": 0.1519,
+        "last_date": "2026-08-01",
+        "span_days": 18,
+        "total_return_pct": 0.1917,
+        "annualized_return_pct": 3.9603,
+        "volatility_pct": 0.1474,
         "max_drawdown_pct": 0,
         "uptime": 1,
-        "latest_yield_pct": 3.4978053634292072
+        "latest_yield_pct": 3.5023624722903826
       },
       "source": {
         "nav": {
@@ -802,11 +802,11 @@
         "monad"
       ],
       "navs": [
-        1.041111,
-        1.041111,
-        1.041261
+        1.041261,
+        1.041261,
+        1.041415
       ],
-      "max_divergence_pct": 0.0144,
+      "max_divergence_pct": 0.0148,
       "flag": false
     },
     {
@@ -816,10 +816,10 @@
         "monad"
       ],
       "navs": [
-        1.032166,
-        1.032385
+        1.032385,
+        1.03249
       ],
-      "max_divergence_pct": 0.0212,
+      "max_divergence_pct": 0.0102,
       "flag": false
     }
   ],
@@ -1038,13 +1038,13 @@
   ],
   "benchmark": {
     "risk_free_curve": {
-      "as_of": "2026-07-30",
+      "as_of": "2026-07-31",
       "source": "us-treasury",
       "rates": {
-        "m1": 3.79,
-        "m3": 3.82,
+        "m1": 3.78,
+        "m3": 3.83,
         "m6": 3.98,
-        "y1": 4.04
+        "y1": 4.08
       }
     },
     "note": "국채=스프레드는 토큰화·운용 비용. 크레딧/CLO=스프레드는 신용위험 프리미엄. CLO는 변동금리라 국채 벤치는 근사.",
@@ -1053,13 +1053,13 @@
         "oracle_id": "centrifuge_acrdx_eth",
         "ticker": "ACRDX",
         "asset_class": "credit",
-        "token_yield_pct": 0.6849866064109822,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 1.2038125601110463,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -314,
+        "benchmark_pct": 3.83,
+        "spread_bps": -263,
         "verdict": "국채보다 낮음 — 크레딧인데 이례적, 점검 필요"
       },
       {
@@ -1071,86 +1071,86 @@
         "yield_source": "manual · rwa.xyz 7D APY",
         "is_manual": true,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -42,
+        "benchmark_pct": 3.83,
+        "spread_bps": -43,
         "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
       },
       {
         "oracle_id": "centrifuge_decrdx_monad",
         "ticker": "deCRDX",
         "asset_class": "credit",
-        "token_yield_pct": 0.6842744686442928,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 1.202539117312525,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -314,
+        "benchmark_pct": 3.83,
+        "spread_bps": -263,
         "verdict": "국채보다 낮음 — 크레딧인데 이례적, 점검 필요"
       },
       {
         "oracle_id": "centrifuge_dejaaa_base",
         "ticker": "deJAAA",
         "asset_class": "clo",
-        "token_yield_pct": 4.047596933196383,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 3.970874325265518,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": 23,
-        "verdict": "신용 스프레드 +23bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+        "benchmark_pct": 3.83,
+        "spread_bps": 14,
+        "verdict": "신용 스프레드 +14bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
       },
       {
         "oracle_id": "centrifuge_dejtrsy_eth",
         "ticker": "deJTRSY",
         "asset_class": "treasury",
-        "token_yield_pct": 3.5729832597892934,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 3.565179457108055,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -25,
+        "benchmark_pct": 3.83,
+        "spread_bps": -26,
         "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
       },
       {
         "oracle_id": "centrifuge_jaaa_eth",
         "ticker": "JAAA",
         "asset_class": "clo",
-        "token_yield_pct": 4.0498086550501045,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 3.9730575435623567,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": 23,
-        "verdict": "신용 스프레드 +23bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
+        "benchmark_pct": 3.83,
+        "spread_bps": 14,
+        "verdict": "신용 스프레드 +14bp — 신용위험 대비 보상 (프리미엄 적정성 판단)"
       },
       {
         "oracle_id": "centrifuge_jtrsy_eth",
         "ticker": "JTRSY",
         "asset_class": "treasury",
-        "token_yield_pct": 3.573374365806499,
-        "yield_as_of": "2026-07-31",
+        "token_yield_pct": 3.565571983794701,
+        "yield_as_of": "2026-08-01",
         "yield_source": "centrifuge-graphql",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -25,
+        "benchmark_pct": 3.83,
+        "spread_bps": -26,
         "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
       },
       {
         "oracle_id": "superstate_ustb_eth",
         "ticker": "USTB",
         "asset_class": "treasury",
-        "token_yield_pct": 3.4978053634292072,
-        "yield_as_of": "2026-07-29",
+        "token_yield_pct": 3.5023624722903826,
+        "yield_as_of": "2026-07-30",
         "yield_source": "superstate-api",
         "is_manual": false,
         "benchmark_tenor": "m3",
-        "benchmark_pct": 3.82,
-        "spread_bps": -32,
+        "benchmark_pct": 3.83,
+        "spread_bps": -33,
         "verdict": "국채 대비 낮음 — 직접 국채가 유리 (운용보수·토큰화 비용)"
       }
     ]
